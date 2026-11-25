@@ -15,8 +15,10 @@ export default function VideoPopup({ id, title }: { id: string; title: string })
   const frameRef = useRef<HTMLIFrameElement>(null);
 
   const unmute = () => {
-    const msg = JSON.stringify({ event: 'command', func: 'unMute', args: [] });
-    frameRef.current?.contentWindow?.postMessage(msg, '*');
+    const send = (func: string) =>
+      frameRef.current?.contentWindow?.postMessage(JSON.stringify({ event: 'command', func, args: [] }), '*');
+    send('playVideo');
+    send('unMute');
     setMuted(false);
   };
 
