@@ -14,7 +14,7 @@ export type Category = {
 
 export const CATEGORIES: Category[] = [
   { id: 'mep', label: 'AC & MEP', short: 'AC & MEP', blurb: 'AC, electrical, plumbing, CCTV', image: PHOTOS['cat-mep'], imageAlt: 'Plumber repairing pipes under a sink' },
-  { id: 'fit', label: 'Fit-out & finishing', short: 'FIT-OUT', blurb: 'Paint, gypsum, tiles, carpentry', image: PHOTOS['cat-fit'], imageAlt: 'Bright living room with marble floor and large windows' },
+  { id: 'fit', label: 'Fit-out & finishing', short: 'FIT-OUT', blurb: 'Paint, gypsum, tiles, carpentry', image: PHOTOS['cat-fit'], imageAlt: 'Painter using a roller on an interior wall' },
   { id: 'clean', label: 'Cleaning', short: 'CLEANING', blurb: 'Apartments, glass, carpets', image: PHOTOS['cat-clean'], imageAlt: 'Cleaner mopping the floor of a bright modern apartment' },
   { id: 'out', label: 'Outdoor & blasting', short: 'OUTDOOR', blurb: 'Gardens, car wash, blasting', image: PHOTOS['cat-out'], imageAlt: 'White modern villa with landscaped garden and palm trees' },
 ];

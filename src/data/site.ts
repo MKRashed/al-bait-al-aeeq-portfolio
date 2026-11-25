@@ -19,9 +19,9 @@ export const SITE = {
   country: 'United Arab Emirates',
   countryCode: 'AE',
   defaultWhatsAppMessage: 'Hello, I need a technical service in Dubai.',
-  // Shows a small "Sample photo" tag on gallery and before/after images.
-  // Set to false once the company's own job photos replace the stock ones.
-  samplePhotos: true,
+  // Shows a small "Sample photo" tag on gallery images and labels the
+  // gallery as examples. False now that the gallery uses the company's own job photos.
+  samplePhotos: false,
 };
 
 export const waLink = (text: string = SITE.defaultWhatsAppMessage) =>

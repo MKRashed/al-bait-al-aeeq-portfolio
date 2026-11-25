@@ -9,15 +9,18 @@ export const STEPS: { n: string; title: string; text: string; photo: PhotoKey; a
 ];
 
 export const GALLERY: { photo: PhotoKey; cat: CategoryId; cap: string; alt: string; tall?: boolean; service: string }[] = [
-  { photo: 'work-1', cat: 'mep', cap: 'AC maintenance', alt: 'Technician servicing an outdoor air conditioning unit', tall: true, service: 'ac-repair-maintenance-dubai' },
-  { photo: 'work-2', cat: 'fit', cap: 'Interior painting', alt: 'Painter rolling paint on an interior wall', service: 'painting-services-dubai' },
-  { photo: 'work-3', cat: 'fit', cap: 'Gypsum & false ceiling', alt: 'Gypsum false ceiling with chandelier and spotlights', service: 'false-ceiling-dubai' },
-  { photo: 'work-4', cat: 'fit', cap: 'Tiles & marble', alt: 'Large-format tiled bathroom floor and glass shower', service: 'tiling-works-dubai' },
-  { photo: 'work-5', cat: 'out', cap: 'Landscaping', alt: 'Villa garden with palm trees, lawn and stepping stones', tall: true, service: 'landscaping-dubai' },
-  { photo: 'work-6', cat: 'clean', cap: 'Glass cleaning', alt: 'Workers cleaning a glass building facade from a platform', service: 'glass-window-cleaning-dubai' },
-  { photo: 'work-7', cat: 'mep', cap: 'Electrical works', alt: 'Electrician testing an electrical panel with a meter', service: 'electrical-works-dubai' },
-  { photo: 'work-8', cat: 'clean', cap: 'Apartment cleaning', alt: 'Cleaner vacuuming an upholstered ottoman', tall: true, service: 'apartment-cleaning-dubai' },
-  { photo: 'work-9', cat: 'out', cap: 'High pressure blasting', alt: 'Worker in a safety vest pressure washing a floor', service: 'high-pressure-cleaning-dubai' },
+  { photo: 'job-electrical-rewiring', cat: 'mep', cap: 'Electrical rewiring', alt: 'Two electricians rewiring a wall with a hammer and chisel', tall: true, service: 'electrical-works-dubai' },
+  { photo: 'job-electrical-board', cat: 'mep', cap: 'Distribution board wiring', alt: 'Electricians wiring a distribution board in a new room', tall: true, service: 'electrical-works-dubai' },
+  { photo: 'job-plumbing-sink', cat: 'mep', cap: 'Kitchen sink plumbing', alt: 'Plumber repairing the drain pipe under a kitchen sink', tall: true, service: 'plumbing-works-dubai' },
+  { photo: 'job-water-heater', cat: 'mep', cap: 'Water heater installation', alt: 'Water heater installed above a bathroom ceiling', tall: true, service: 'plumbing-works-dubai' },
+  { photo: 'job-paint-staircase', cat: 'fit', cap: 'Staircase painting', alt: 'Painter rolling paint on a stairwell wall with floors protected', tall: true, service: 'painting-services-dubai' },
+  { photo: 'job-paint-villa-scaffold', cat: 'fit', cap: 'Villa exterior painting', alt: 'Painters on a scaffold painting a villa exterior', tall: true, service: 'painting-services-dubai' },
+  { photo: 'job-paint-carport', cat: 'fit', cap: 'Carport painting', alt: 'Painter on a ladder painting a carport wall and ceiling', tall: true, service: 'painting-services-dubai' },
+  { photo: 'job-paint-roller', cat: 'fit', cap: 'Interior wall painting', alt: 'Painter using a roller on an interior wall', tall: true, service: 'painting-services-dubai' },
+  { photo: 'job-tiling-bathroom', cat: 'fit', cap: 'Bathroom tiling', alt: 'Tiler cutting a floor tile in a bathroom', tall: true, service: 'tiling-works-dubai' },
+  { photo: 'job-plastering-ladder', cat: 'fit', cap: 'Wall plastering', alt: 'Mason plastering a boundary wall from a ladder', tall: true, service: 'masonry-works-dubai' },
+  { photo: 'job-cement-mixing', cat: 'fit', cap: 'Wall repair', alt: 'Workers mixing cement for an interior wall repair', tall: true, service: 'masonry-works-dubai' },
+  { photo: 'job-paving-laying', cat: 'fit', cap: 'Interlock paving', alt: 'Workers laying interlock paving blocks beside a villa', tall: true, service: 'masonry-works-dubai' },
 ];
 
 export const BEFORE_AFTER: { id: string; label: string; before: PhotoKey; after: PhotoKey }[] = [

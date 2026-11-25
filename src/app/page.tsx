@@ -4,7 +4,7 @@ import { WhatsAppIcon } from '@/components/Icons';
 import Process from '@/components/Process';
 import QuoteForm from '@/components/QuoteForm';
 import ServicesExplorer from '@/components/ServicesExplorer';
-import { BeforeAfter, Gallery } from '@/components/Work';
+import { Gallery } from '@/components/Work';
 import { PHOTOS } from '@/data/photos';
 import { SERVICES } from '@/data/services';
 import { SITE, waLink } from '@/data/site';
@@ -80,9 +80,9 @@ export default function Home() {
             </ul>
           </div>
           <div className="collage">
-            <div className="tile"><Image src={PHOTOS['hero-main']} alt="Electrician in a hard hat installing wiring" fill preload sizes="(max-width: 900px) 60vw, 330px" className="cover" placeholder="blur" /></div>
-            <div className="tile"><Image src={PHOTOS['hero-a']} alt="Technician working on an electrical panel" fill sizes="(max-width: 900px) 40vw, 230px" className="cover" placeholder="blur" /></div>
-            <div className="tile"><Image src={PHOTOS['hero-b']} alt="Painter with a paint roller" fill sizes="(max-width: 900px) 40vw, 230px" className="cover" placeholder="blur" /></div>
+            <div className="tile"><Image src={PHOTOS['hero-main']} alt="Painters on a scaffold painting a villa exterior" fill preload sizes="(max-width: 900px) 60vw, 330px" className="cover" placeholder="blur" /></div>
+            <div className="tile"><Image src={PHOTOS['hero-a']} alt="Electricians wiring a distribution board" fill sizes="(max-width: 900px) 40vw, 230px" className="cover" placeholder="blur" /></div>
+            <div className="tile"><Image src={PHOTOS['hero-b']} alt="Painter rolling paint in a stairwell" fill sizes="(max-width: 900px) 40vw, 230px" className="cover" placeholder="blur" /></div>
           </div>
         </div>
       </section>
@@ -131,7 +131,6 @@ export default function Home() {
             <a className="reveal" href={waLink('Hello, can you send me photos of your recent work?')} target="_blank" rel="noopener" style={{ fontWeight: 700, borderBottom: '2px solid var(--blue)', paddingBottom: 2 }}>Ask for more photos on WhatsApp</a>
           </div>
           {/* Before/after only makes sense with real photos of the same job. */}
-          {!SITE.samplePhotos && <BeforeAfter />}
           <Gallery />
           <a className="btn btn-outline gallery-video-link" href="#videos">View video gallery</a>
         </div>

@@ -83,7 +83,7 @@ export function Gallery() {
   }, [open, nav]);
 
   const cur = open !== null ? list[open] : null;
-  const tabs = [{ id: 'all' as const, label: 'All' }, ...CATEGORIES];
+  const tabs = [{ id: 'all' as const, label: 'All' }, ...CATEGORIES.filter((c) => GALLERY.some((g) => g.cat === c.id))];
 
   return (
     <>
