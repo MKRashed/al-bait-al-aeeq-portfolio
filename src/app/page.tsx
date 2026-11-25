@@ -5,16 +5,11 @@ import Process from '@/components/Process';
 import QuoteForm from '@/components/QuoteForm';
 import ServicesExplorer from '@/components/ServicesExplorer';
 import VideoPopup from '@/components/VideoPopup';
-import YouTubeFacade from '@/components/YouTubeFacade';
+import VideoGallery, { type GalleryVideo } from '@/components/VideoGallery';
 import { Gallery } from '@/components/Work';
 import { PHOTOS } from '@/data/photos';
 import { SERVICES } from '@/data/services';
 import { SITE, waLink } from '@/data/site';
-
-type GalleryVideo = { title: string } & (
-  | { source: 'youtube'; id: string; format: 'short' | 'video' }
-  | { source: 'file'; src: string; format: 'video'; portrait?: boolean }
-);
 
 const VIDEOS: GalleryVideo[] = [
   { source: 'youtube', id: 'KGLAw0lkHec', format: 'short', title: 'Project highlights' },
@@ -23,36 +18,6 @@ const VIDEOS: GalleryVideo[] = [
   { source: 'file', src: '/videos/project-1.mp4', format: 'video', portrait: true, title: 'Project video 1' },
   { source: 'file', src: '/videos/project-2.mp4', format: 'video', portrait: true, title: 'Project video 2' },
 ];
-
-const LONG_VIDEOS = VIDEOS.filter((v) => v.format === 'video');
-const SHORTS = VIDEOS.filter((v) => v.format === 'short');
-
-function VideoCard({ video }: { video: GalleryVideo }) {
-  return (
-    <figure className={`video-card video-card--${video.format}${video.source === 'file' && video.portrait ? ' video-card--portrait' : ''}`}>
-      {video.source === 'youtube' ? (
-        <YouTubeFacade id={video.id} title={video.title} />
-      ) : (
-        <video controls playsInline preload="metadata" aria-label={video.title}>
-          <source src={video.src} type="video/mp4" />
-          Your browser does not support embedded video. <a href={video.src}>Open {video.title}</a>.
-        </video>
-      )}
-      <figcaption>
-        <div>
-          <span className="video-format">{video.format === 'short' ? 'Shorts' : 'Video'}</span>
-          <h3>{video.title}</h3>
-        </div>
-        <a
-          href={video.source === 'youtube'
-            ? video.format === 'short' ? `https://www.youtube.com/shorts/${video.id}` : `https://www.youtube.com/watch?v=${video.id}`
-            : video.src}
-          target="_blank" rel="noopener noreferrer"
-        >{video.source === 'youtube' ? 'Watch on YouTube' : 'Open video'}</a>
-      </figcaption>
-    </figure>
-  );
-}
 
 export default function Home() {
   const [p1, p2] = SITE.phones;
@@ -139,26 +104,7 @@ export default function Home() {
             <h2 id="videos-title" className="h2">A closer look at our work</h2>
             <p className="lead">Watch videos and Shorts from our projects. Select a video to play.</p>
           </div>
-          {LONG_VIDEOS.length > 0 && (
-            <>
-              <h3 className="video-group-title">Videos</h3>
-              <div className="video-grid video-grid--long">
-                {LONG_VIDEOS.map((video) => (
-                  <VideoCard video={video} key={video.source === 'youtube' ? video.id : video.src} />
-                ))}
-              </div>
-            </>
-          )}
-          {SHORTS.length > 0 && (
-            <>
-              <h3 className="video-group-title">Shorts</h3>
-              <div className="video-grid video-grid--shorts">
-                {SHORTS.map((video) => (
-                  <VideoCard video={video} key={video.source === 'youtube' ? video.id : video.src} />
-                ))}
-              </div>
-            </>
-          )}
+          <VideoGallery videos={VIDEOS} />
         </div>
       </section>
 
