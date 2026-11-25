@@ -20,6 +20,17 @@ export const metadata: Metadata = {
     template: '%s | Al Bait Al Ateeq',
   },
   description,
+  keywords: [
+    'maintenance company Dubai',
+    'AC repair Dubai',
+    'electrician Dubai',
+    'plumber Dubai',
+    'painting services Dubai',
+    'villa fit-out Dubai',
+    'tiling and masonry Dubai',
+    'interlock paving Dubai',
+    'cleaning services Dubai',
+  ],
   robots: {
     index: true,
     follow: true,

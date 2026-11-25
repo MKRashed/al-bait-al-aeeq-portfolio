@@ -15,7 +15,7 @@ async function currentYear() {
 const NAV = [
   { href: '/services', label: 'Services' },
   { href: '/#process', label: 'How we work' },
-  { href: '/#work', label: SITE.samplePhotos ? 'Gallery' : 'Our work' },
+  { href: '/#work', label: 'Our work' },
   { href: '/#videos', label: 'Videos' },
   { href: '/#contact', label: 'Contact' },
 ];

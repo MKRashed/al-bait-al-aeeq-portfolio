@@ -4,6 +4,8 @@ import { WhatsAppIcon } from '@/components/Icons';
 import Process from '@/components/Process';
 import QuoteForm from '@/components/QuoteForm';
 import ServicesExplorer from '@/components/ServicesExplorer';
+import VideoPopup from '@/components/VideoPopup';
+import YouTubeFacade from '@/components/YouTubeFacade';
 import { Gallery } from '@/components/Work';
 import { PHOTOS } from '@/data/photos';
 import { SERVICES } from '@/data/services';
@@ -11,14 +13,15 @@ import { SITE, waLink } from '@/data/site';
 
 type GalleryVideo = { title: string } & (
   | { source: 'youtube'; id: string; format: 'short' | 'video' }
-  | { source: 'file'; src: string; format: 'video' }
+  | { source: 'file'; src: string; format: 'video'; portrait?: boolean }
 );
 
 const VIDEOS: GalleryVideo[] = [
   { source: 'youtube', id: 'KGLAw0lkHec', format: 'short', title: 'Project highlights' },
   { source: 'youtube', id: '_7v536tyKvo', format: 'short', title: 'Project highlights 2' },
-  { source: 'file', src: '/videos/project-1.mp4', format: 'video', title: 'Project video 1' },
-  { source: 'file', src: '/videos/project-2.mp4', format: 'video', title: 'Project video 2' },
+  // Both files are portrait (478x850): `portrait` gives them a 9:16 box without letterboxing.
+  { source: 'file', src: '/videos/project-1.mp4', format: 'video', portrait: true, title: 'Project video 1' },
+  { source: 'file', src: '/videos/project-2.mp4', format: 'video', portrait: true, title: 'Project video 2' },
 ];
 
 const LONG_VIDEOS = VIDEOS.filter((v) => v.format === 'video');
@@ -26,16 +29,9 @@ const SHORTS = VIDEOS.filter((v) => v.format === 'short');
 
 function VideoCard({ video }: { video: GalleryVideo }) {
   return (
-    <figure className={`video-card video-card--${video.format}`}>
+    <figure className={`video-card video-card--${video.format}${video.source === 'file' && video.portrait ? ' video-card--portrait' : ''}`}>
       {video.source === 'youtube' ? (
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${video.id}?playsinline=1&rel=0`}
-          title={video.title}
-          loading="lazy"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        />
+        <YouTubeFacade id={video.id} title={video.title} />
       ) : (
         <video controls playsInline preload="metadata" aria-label={video.title}>
           <source src={video.src} type="video/mp4" />
@@ -62,6 +58,7 @@ export default function Home() {
   const [p1, p2] = SITE.phones;
   return (
     <>
+      <VideoPopup src="/videos/project-1.mp4" title="Project video 1" />
       <section className="hero deep" aria-labelledby="hero-title">
         <div className="hero-corner" aria-hidden="true" />
         <div className="wrap">
@@ -125,12 +122,11 @@ export default function Home() {
         <div className="wrap">
           <div className="head-row">
             <div className="head-col">
-              <p className="eyebrow reveal">{SITE.samplePhotos ? 'Gallery' : 'Our work'}</p>
-              <h2 id="work-title" className="h2 reveal">{SITE.samplePhotos ? 'The kind of work we do' : 'Recent jobs'}</h2>
+              <p className="eyebrow reveal">Our work</p>
+              <h2 id="work-title" className="h2 reveal">Recent jobs</h2>
             </div>
             <a className="reveal" href={waLink('Hello, can you send me photos of your recent work?')} target="_blank" rel="noopener" style={{ fontWeight: 700, borderBottom: '2px solid var(--blue)', paddingBottom: 2 }}>Ask for more photos on WhatsApp</a>
           </div>
-          {/* Before/after only makes sense with real photos of the same job. */}
           <Gallery />
           <a className="btn btn-outline gallery-video-link" href="#videos">View video gallery</a>
         </div>
@@ -141,20 +137,28 @@ export default function Home() {
           <div className="head-col">
             <p className="eyebrow">Video gallery</p>
             <h2 id="videos-title" className="h2">A closer look at our work</h2>
-            <p className="lead">Watch Shorts and videos from our projects. Select a video to play.</p>
+            <p className="lead">Watch videos and Shorts from our projects. Select a video to play.</p>
           </div>
-          <h3 className="video-group-title">Videos</h3>
-          <div className="video-grid video-grid--long">
-            {LONG_VIDEOS.map((video) => (
-              <VideoCard video={video} key={video.source === 'youtube' ? video.id : video.src} />
-            ))}
-          </div>
-          <h3 className="video-group-title">Shorts</h3>
-          <div className="video-grid video-grid--shorts">
-            {SHORTS.map((video) => (
-              <VideoCard video={video} key={video.source === 'youtube' ? video.id : video.src} />
-            ))}
-          </div>
+          {LONG_VIDEOS.length > 0 && (
+            <>
+              <h3 className="video-group-title">Videos</h3>
+              <div className="video-grid video-grid--long">
+                {LONG_VIDEOS.map((video) => (
+                  <VideoCard video={video} key={video.source === 'youtube' ? video.id : video.src} />
+                ))}
+              </div>
+            </>
+          )}
+          {SHORTS.length > 0 && (
+            <>
+              <h3 className="video-group-title">Shorts</h3>
+              <div className="video-grid video-grid--shorts">
+                {SHORTS.map((video) => (
+                  <VideoCard video={video} key={video.source === 'youtube' ? video.id : video.src} />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 

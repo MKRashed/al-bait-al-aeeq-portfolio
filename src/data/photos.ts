@@ -1,18 +1,12 @@
 // Static imports give next/image the width, height and a blur placeholder.
-// Job photos are the company's own. Step, cleaning, outdoor and before/after
-// images are still Unsplash stock (see CREDITS below).
+// Job photos are the company's own. Step, cleaning and outdoor images are still
+// Unsplash stock (see CREDITS below).
 import catClean from '@/assets/photos/cat-clean.jpg';
 import catOut from '@/assets/photos/cat-out.jpg';
 import step1 from '@/assets/photos/step-1.jpg';
 import step2 from '@/assets/photos/step-2.jpg';
 import step3 from '@/assets/photos/step-3.jpg';
 import step4 from '@/assets/photos/step-4.jpg';
-import baPaintBefore from '@/assets/photos/ba-paint-before.jpg';
-import baPaintAfter from '@/assets/photos/ba-paint-after.jpg';
-import baTilesBefore from '@/assets/photos/ba-tiles-before.jpg';
-import baTilesAfter from '@/assets/photos/ba-tiles-after.jpg';
-import baGlassBefore from '@/assets/photos/ba-glass-before.jpg';
-import baGlassAfter from '@/assets/photos/ba-glass-after.jpg';
 
 import electricalRewiring from '@/assets/photos/electrical-rewiring-wall-2.jpeg';
 import electricalBoard from '@/assets/photos/electrical-distribution-board-wiring.jpeg';
@@ -43,9 +37,6 @@ export const PHOTOS = {
   'job-plastering-ladder': plasteringLadder,
   'job-cement-mixing': cementMixing,
   'job-paving-laying': pavingLaying,
-  'ba-paint-before': baPaintBefore, 'ba-paint-after': baPaintAfter,
-  'ba-tiles-before': baTilesBefore, 'ba-tiles-after': baTilesAfter,
-  'ba-glass-before': baGlassBefore, 'ba-glass-after': baGlassAfter,
 };
 
 export type PhotoKey = keyof typeof PHOTOS;
@@ -58,10 +49,4 @@ export const CREDITS: { key: PhotoKey; name: string; user: string }[] = [
   { key: 'step-2', name: 'John Kakuk', user: 'lensatic' },
   { key: 'step-3', name: 'Vitaly Gariev', user: 'silverkblack' },
   { key: 'step-4', name: 'Aalo Lens', user: 'aalolens' },
-  { key: 'ba-paint-before', name: 'Krakograff Textures', user: 'krakograff' },
-  { key: 'ba-paint-after', name: 'Prydumano Design', user: 'prydumanodesign' },
-  { key: 'ba-tiles-before', name: 'Tsuyoshi Kozu', user: 'tsuyoshikozu' },
-  { key: 'ba-tiles-after', name: 'Clay Banks', user: 'claybanks' },
-  { key: 'ba-glass-before', name: 'Denny Müller', user: 'redaquamedia' },
-  { key: 'ba-glass-after', name: 'Ismail Merad', user: 'ismail_fwcr' },
 ];

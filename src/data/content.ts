@@ -22,9 +22,3 @@ export const GALLERY: { photo: PhotoKey; cat: CategoryId; cap: string; alt: stri
   { photo: 'job-cement-mixing', cat: 'fit', cap: 'Wall repair', alt: 'Workers mixing cement for an interior wall repair', tall: true, service: 'masonry-works-dubai' },
   { photo: 'job-paving-laying', cat: 'fit', cap: 'Interlock paving', alt: 'Workers laying interlock paving blocks beside a villa', tall: true, service: 'masonry-works-dubai' },
 ];
-
-export const BEFORE_AFTER: { id: string; label: string; before: PhotoKey; after: PhotoKey }[] = [
-  { id: 'paint', label: 'Interior painting', before: 'ba-paint-before', after: 'ba-paint-after' },
-  { id: 'tiles', label: 'Bathroom tiling', before: 'ba-tiles-before', after: 'ba-tiles-after' },
-  { id: 'glass', label: 'Glass cleaning', before: 'ba-glass-before', after: 'ba-glass-after' },
-];

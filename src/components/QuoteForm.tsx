@@ -24,9 +24,9 @@ export default function QuoteForm({ defaultService = '' }: { defaultService?: st
     <form className="form" onSubmit={onSubmit}>
       <h3>Request a quote</h3>
       <label>Your name<input name="name" placeholder="Full name" autoComplete="name" /></label>
-      <label>Area in Dubai<input name="area" placeholder="e.g. JLT, Al Barsha, Deira" /></label>
-      <label>Service needed
-        <select name="service" defaultValue={defaultService}>
+      <label>Area in Dubai *<input name="area" placeholder="e.g. JLT, Al Barsha, Deira" required /></label>
+      <label>Service needed *
+        <select name="service" defaultValue={defaultService} required>
           <option value="">Select a service</option>
           {SERVICES.map((s) => <option key={s.slug} value={s.name}>{s.name}</option>)}
         </select>
