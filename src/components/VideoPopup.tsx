@@ -8,9 +8,17 @@ const SEEN_KEY = 'promo-video-seen';
 const DELAY_MS = 10000;
 
 /** Marketing pop-up: shows one project video once per session, after a short delay. */
-export default function VideoPopup({ src, title }: { src: string; title: string }) {
+export default function VideoPopup({ id, title }: { id: string; title: string }) {
   const [open, setOpen] = useState(false);
+  const [muted, setMuted] = useState(true);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const frameRef = useRef<HTMLIFrameElement>(null);
+
+  const unmute = () => {
+    const msg = JSON.stringify({ event: 'command', func: 'unMute', args: [] });
+    frameRef.current?.contentWindow?.postMessage(msg, '*');
+    setMuted(false);
+  };
 
   useEffect(() => {
     try {
@@ -47,10 +55,24 @@ export default function VideoPopup({ src, title }: { src: string; title: string 
     <div className="promo" role="dialog" aria-modal="true" aria-labelledby="promo-title" onClick={close}>
       <div className="promo-card" onClick={(e) => e.stopPropagation()}>
         <button ref={closeRef} type="button" className="promo-close" onClick={close} aria-label="Close video">✕</button>
-        <video src={src} autoPlay muted loop playsInline controls aria-label={title} />
+        <div className="promo-media">
+          <iframe
+            ref={frameRef}
+            src={`https://www.youtube-nocookie.com/embed/${id}?playsinline=1&rel=0&autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&modestbranding=1&enablejsapi=1&disablekb=1&fs=0&iv_load_policy=3`}
+            title={title}
+            referrerPolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+          {muted && (
+            <button type="button" className="promo-sound" onClick={unmute}>
+              🔊 Tap for sound
+            </button>
+          )}
+        </div>
         <div className="promo-body">
+          <span className="promo-badge">Free site visit in Dubai</span>
           <b id="promo-title">See how we work</b>
-          <p>Tell us about your job in Dubai and we will arrange a visit.</p>
           <a
             className="btn btn-wa"
             href={waLink('Hello, I watched your video and need a quote.')}
@@ -60,7 +82,10 @@ export default function VideoPopup({ src, title }: { src: string; title: string 
           >
             <WhatsAppIcon />Get a quote on WhatsApp
           </a>
-          <a className="promo-call" href={`tel:${SITE.phones[0].tel}`}>or call {SITE.phones[0].display}</a>
+          <div className="promo-links">
+            <a className="promo-call" href={`tel:${SITE.phones[0].tel}`}>Call {SITE.phones[0].display}</a>
+            <button type="button" className="promo-later" onClick={close}>Maybe later</button>
+          </div>
         </div>
       </div>
     </div>

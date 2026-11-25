@@ -58,7 +58,7 @@ export default function Home() {
   const [p1, p2] = SITE.phones;
   return (
     <>
-      <VideoPopup src="/videos/project-1.mp4" title="Project video 1" />
+      <VideoPopup id="klLKXbG3Dew" title="Al Bait Al Aeeq promotional video" />
       <section className="hero deep" aria-labelledby="hero-title">
         <div className="hero-corner" aria-hidden="true" />
         <div className="wrap">
