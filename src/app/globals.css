@@ -227,6 +227,25 @@ input, select, textarea, button { font: inherit; }
 .lb-cap a { color: var(--muted); font-size: 14px; text-decoration: underline; }
 @keyframes fadein { from { opacity: 0; } }
 
+.gallery-video-link { margin-top: 24px; }
+.video-gallery { background: var(--soft); }
+.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); align-items: start; gap: 24px; margin-top: 32px; }
+.video-group-title { margin: 40px 0 0; font-family: var(--display); font-size: 24px; }
+.video-group-title + .video-grid { margin-top: 16px; }
+.video-grid--long { grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); }
+.video-grid--shorts { grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 240px)); gap: 16px; }
+.video-grid--shorts .video-card--short { max-width: none; }
+.video-grid--shorts .video-card figcaption { padding: 12px; }
+.video-grid--shorts .video-card h3 { font-size: 16px; }
+.video-card { margin: 0; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+.video-card iframe, .video-card video { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; object-fit: contain; background: var(--navy); }
+.video-card--short { width: 100%; max-width: 420px; justify-self: center; }
+.video-card--short iframe { aspect-ratio: 9 / 16; }
+.video-format { display: block; margin-bottom: 6px; color: var(--red); font-size: 14px; font-weight: 700; }
+.video-card figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 20px; }
+.video-card h3 { margin: 0; font-family: var(--display); font-size: 20px; }
+.video-card figcaption a { font-size: 14px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+
 /* Contact */
 .contact { position: relative; overflow: hidden; }
 .contact-corner { position: absolute; bottom: 0; left: 0; width: 0; height: 0; border-bottom: 140px solid var(--red); border-right: 140px solid transparent; }

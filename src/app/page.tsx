@@ -9,6 +9,55 @@ import { PHOTOS } from '@/data/photos';
 import { SERVICES } from '@/data/services';
 import { SITE, waLink } from '@/data/site';
 
+type GalleryVideo = { title: string } & (
+  | { source: 'youtube'; id: string; format: 'short' | 'video' }
+  | { source: 'file'; src: string; format: 'video' }
+);
+
+const VIDEOS: GalleryVideo[] = [
+  { source: 'youtube', id: 'KGLAw0lkHec', format: 'short', title: 'Project highlights' },
+  { source: 'youtube', id: '_7v536tyKvo', format: 'short', title: 'Project highlights 2' },
+  { source: 'file', src: '/videos/project-1.mp4', format: 'video', title: 'Project video 1' },
+  { source: 'file', src: '/videos/project-2.mp4', format: 'video', title: 'Project video 2' },
+];
+
+const LONG_VIDEOS = VIDEOS.filter((v) => v.format === 'video');
+const SHORTS = VIDEOS.filter((v) => v.format === 'short');
+
+function VideoCard({ video }: { video: GalleryVideo }) {
+  return (
+    <figure className={`video-card video-card--${video.format}`}>
+      {video.source === 'youtube' ? (
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${video.id}?playsinline=1&rel=0`}
+          title={video.title}
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      ) : (
+        <video controls playsInline preload="metadata" aria-label={video.title}>
+          <source src={video.src} type="video/mp4" />
+          Your browser does not support embedded video. <a href={video.src}>Open {video.title}</a>.
+        </video>
+      )}
+      <figcaption>
+        <div>
+          <span className="video-format">{video.format === 'short' ? 'Shorts' : 'Video'}</span>
+          <h3>{video.title}</h3>
+        </div>
+        <a
+          href={video.source === 'youtube'
+            ? video.format === 'short' ? `https://www.youtube.com/shorts/${video.id}` : `https://www.youtube.com/watch?v=${video.id}`
+            : video.src}
+          target="_blank" rel="noopener noreferrer"
+        >{video.source === 'youtube' ? 'Watch on YouTube' : 'Open video'}</a>
+      </figcaption>
+    </figure>
+  );
+}
+
 export default function Home() {
   const [p1, p2] = SITE.phones;
   return (
@@ -84,6 +133,29 @@ export default function Home() {
           {/* Before/after only makes sense with real photos of the same job. */}
           {!SITE.samplePhotos && <BeforeAfter />}
           <Gallery />
+          <a className="btn btn-outline gallery-video-link" href="#videos">View video gallery</a>
+        </div>
+      </section>
+
+      <section id="videos" className="section video-gallery" aria-labelledby="videos-title">
+        <div className="wrap">
+          <div className="head-col">
+            <p className="eyebrow">Video gallery</p>
+            <h2 id="videos-title" className="h2">A closer look at our work</h2>
+            <p className="lead">Watch Shorts and videos from our projects. Select a video to play.</p>
+          </div>
+          <h3 className="video-group-title">Videos</h3>
+          <div className="video-grid video-grid--long">
+            {LONG_VIDEOS.map((video) => (
+              <VideoCard video={video} key={video.source === 'youtube' ? video.id : video.src} />
+            ))}
+          </div>
+          <h3 className="video-group-title">Shorts</h3>
+          <div className="video-grid video-grid--shorts">
+            {SHORTS.map((video) => (
+              <VideoCard video={video} key={video.source === 'youtube' ? video.id : video.src} />
+            ))}
+          </div>
         </div>
       </section>
 

@@ -11,15 +11,20 @@ const dm = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700'], v
 const kufi = Noto_Kufi_Arabic({ subsets: ['arabic'], weight: ['700'], variable: '--font-kufi' });
 
 const description =
-  'Al Bait Al Ateeq Technical Services Co. – AC repair, electrical, plumbing, painting, gypsum, tiling, carpentry, cleaning and landscaping for villas, apartments and offices in Dubai. Call or WhatsApp 050 352 4571.';
+  'AC, electrical, plumbing, painting, cleaning and fit-out services for homes and offices in Dubai. Call or WhatsApp 050 352 4571.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: 'Al Bait Al Ateeq Technical Services | Maintenance & Fit-out in Dubai',
+    default: 'Al Bait Al Ateeq | Maintenance & Fit-out in Dubai',
     template: '%s | Al Bait Al Ateeq',
   },
   description,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
+  },
   applicationName: SITE.shortName,
   alternates: { canonical: '/' },
   openGraph: {

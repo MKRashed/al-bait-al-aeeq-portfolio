@@ -16,6 +16,7 @@ const NAV = [
   { href: '/services', label: 'Services' },
   { href: '/#process', label: 'How we work' },
   { href: '/#work', label: SITE.samplePhotos ? 'Gallery' : 'Our work' },
+  { href: '/#videos', label: 'Videos' },
   { href: '/#contact', label: 'Contact' },
 ];
 
@@ -38,7 +39,7 @@ export function Header() {
       <header className="header">
         <div className="wrap">
           <Link href="/" className="brand" aria-label={`${SITE.shortName} home`}>
-            <Image src={logo} alt="" width={48} height={48} preload />
+            <Image src={logo} alt="Al Bait Al Ateeq logo" width={48} height={48} preload />
             <span className="brand-text">
               <span className="brand-name">AL BAIT AL ATEEQ</span>
               <span className="brand-sub">TECHNICAL SERVICES CO.</span>
@@ -72,7 +73,7 @@ export async function Footer() {
       <div className="wrap footer-top">
         <div>
           <Link href="/" className="brand" style={{ color: '#fff', marginBottom: 14 }}>
-            <Image src={logo} alt="" width={40} height={40} />
+            <Image src={logo} alt="Al Bait Al Ateeq logo" width={40} height={40} />
             <span className="brand-text">
               <span className="brand-name" style={{ color: '#fff', fontSize: 16 }}>AL BAIT AL ATEEQ</span>
               <span className="brand-sub">TECHNICAL SERVICES CO.</span>
@@ -100,6 +101,7 @@ export async function Footer() {
           <span>© {year} {SITE.name} {SITE.city}, UAE</span>
           <span style={{ display: 'flex', gap: 22, flexWrap: 'wrap' }}>
             <Link href="/services">All services</Link>
+            <Link href="/#videos">Video gallery</Link>
             <Link href="/#contact">Contact</Link>
             <Link href="/credits">Photo credits</Link>
           </span>
