@@ -20,6 +20,17 @@ import tilingBathroom from '@/assets/photos/tiling-bathroom-tile-cutting.jpeg';
 import plasteringLadder from '@/assets/photos/wall-plastering-ladder-1.jpeg';
 import cementMixing from '@/assets/photos/cement-mixing-wall-repair.jpeg';
 import pavingLaying from '@/assets/photos/paving-interlock-laying.jpeg';
+import acSplit from '@/assets/photos/ac-split-unit-installation.jpg';
+import boardOpen from '@/assets/photos/electrical-distribution-board-open.jpg';
+import outdoorLight from '@/assets/photos/electrical-outdoor-wall-light-2.jpg';
+import roofPipes from '@/assets/photos/plumbing-rooftop-pipe-fitting-1.jpg';
+import bathDrain from '@/assets/photos/plumbing-bathroom-floor-drain.jpg';
+import gypsumBoard from '@/assets/photos/gypsum-ceiling-board-fixing.jpg';
+import gypsumHall from '@/assets/photos/gypsum-ceiling-scaffold-hall.jpg';
+import tileLarge from '@/assets/photos/tiling-floor-installation-team.jpg';
+import marbleStairs from '@/assets/photos/marble-staircase-cladding.jpg';
+import masonryMix from '@/assets/photos/masonry-mortar-mixing-drill.jpg';
+import pavingTeam from '@/assets/photos/paving-interlock-team.jpg';
 
 export const PHOTOS = {
   'hero-main': paintVillaScaffold, 'hero-a': electricalBoard, 'hero-b': paintStaircase,
@@ -37,6 +48,17 @@ export const PHOTOS = {
   'job-plastering-ladder': plasteringLadder,
   'job-cement-mixing': cementMixing,
   'job-paving-laying': pavingLaying,
+  'job-ac-split': acSplit,
+  'job-electrical-board-open': boardOpen,
+  'job-electrical-outdoor-light': outdoorLight,
+  'job-plumbing-roof-pipes': roofPipes,
+  'job-plumbing-bath-drain': bathDrain,
+  'job-gypsum-board': gypsumBoard,
+  'job-gypsum-hall': gypsumHall,
+  'job-tiling-floor': tileLarge,
+  'job-marble-stairs': marbleStairs,
+  'job-masonry-mix': masonryMix,
+  'job-paving-team': pavingTeam,
 };
 
 export type PhotoKey = keyof typeof PHOTOS;

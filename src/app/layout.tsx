@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Archivo, DM_Sans, Noto_Kufi_Arabic } from 'next/font/google';
+import { Archivo, Caveat, DM_Sans, Noto_Kufi_Arabic } from 'next/font/google';
 import { FloatingWhatsApp, Footer, Header, JsonLd } from '@/components/Chrome';
 import TabBar from '@/components/TabBar';
 import { SERVICES } from '@/data/services';
@@ -9,6 +9,7 @@ import './globals.css';
 const archivo = Archivo({ subsets: ['latin'], weight: ['700', '800', '900'], variable: '--font-archivo' });
 const dm = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-dm' });
 const kufi = Noto_Kufi_Arabic({ subsets: ['arabic'], weight: ['700'], variable: '--font-kufi' });
+const caveat = Caveat({ subsets: ['latin'], weight: ['600'], variable: '--font-caveat' });
 
 const description =
   'AC, electrical, plumbing, painting, cleaning and fit-out services for homes and offices in Dubai. Call or WhatsApp 050 352 4571.';
@@ -81,7 +82,7 @@ const business = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${dm.variable} ${kufi.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${archivo.variable} ${dm.variable} ${kufi.variable} ${caveat.variable}`}>
       <body>
         <JsonLd data={business} />
         <Header />

@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import HeroReel, { type ReelCard } from '@/components/HeroReel';
 import { WhatsAppIcon } from '@/components/Icons';
 import Process from '@/components/Process';
 import QuoteForm from '@/components/QuoteForm';
@@ -19,6 +19,25 @@ const VIDEOS: GalleryVideo[] = [
   { source: 'file', src: '/videos/project-2.mp4', format: 'video', portrait: true, title: 'Project video 2' },
 ];
 
+const svc = (slug: string) => `/services/${slug}`;
+// Hero carousel: our own job photos, each linking to its service page.
+const REEL: ReelCard[] = [
+  { href: svc('ac-repair-maintenance-dubai'), label: 'AC installation', image: PHOTOS['job-ac-split'], alt: 'Team fixing a split AC unit to a wall' },
+  { href: svc('painting-services-dubai'), label: 'Painting', image: PHOTOS['job-paint-villa-scaffold'], alt: 'Painters on a scaffold painting a villa exterior' },
+  { href: svc('electrical-works-dubai'), label: 'Electrical works', image: PHOTOS['job-electrical-board-open'], alt: 'Wired electrical distribution board' },
+  { href: svc('gypsum-works-dubai'), label: 'Gypsum works', image: PHOTOS['job-gypsum-board'], alt: 'Worker fixing a gypsum ceiling board' },
+  { href: svc('plumbing-works-dubai'), label: 'Plumbing', image: PHOTOS['job-plumbing-roof-pipes'], alt: 'Plumbers fitting water pipes on a roof' },
+  { href: svc('tiling-works-dubai'), label: 'Tiling', image: PHOTOS['job-tiling-floor'], alt: 'Tilers laying large floor tiles' },
+  { href: svc('marble-works-dubai'), label: 'Marble works', image: PHOTOS['job-marble-stairs'], alt: 'Worker cladding entrance steps in stone' },
+  { href: svc('false-ceiling-dubai'), label: 'False ceiling', image: PHOTOS['job-gypsum-hall'], alt: 'Ceiling work from scaffolding in a large hall' },
+  { href: svc('masonry-works-dubai'), label: 'Mason works', image: PHOTOS['job-masonry-mix'], alt: 'Mason mixing mortar with a drill' },
+  { href: svc('electrical-works-dubai'), label: 'Outdoor lighting', image: PHOTOS['job-electrical-outdoor-light'], alt: 'Electrician fitting an outdoor wall light' },
+  { href: svc('landscaping-dubai'), label: 'Interlock paving', image: PHOTOS['job-paving-team'], alt: 'Crew laying interlock paving blocks' },
+  { href: svc('painting-services-dubai'), label: 'Interior painting', image: PHOTOS['job-paint-staircase'], alt: 'Painter rolling paint in a stairwell' },
+  { href: svc('plumbing-works-dubai'), label: 'Bathroom plumbing', image: PHOTOS['job-plumbing-bath-drain'], alt: 'Plumber fitting a bathroom floor drain' },
+  { href: svc('cleaning-services-dubai'), label: 'Cleaning', image: PHOTOS['cat-clean'], alt: 'Cleaner mopping the floor of a bright apartment' },
+];
+
 export default function Home() {
   const [p1, p2] = SITE.phones;
   return (
@@ -28,25 +47,30 @@ export default function Home() {
         <div className="hero-corner" aria-hidden="true" />
         <div className="wrap">
           <div className="hero-copy">
-            <p className="hero-ar" lang="ar" dir="rtl" style={{ textAlign: 'left' }}>{SITE.arabicName}</p>
-            <h1 id="hero-title">Maintenance, fit-out and cleaning for homes and offices in Dubai.</h1>
-            <p className="hero-lead">One team for AC, electrical, plumbing, painting, gypsum, tiling, carpentry, cleaning and more. Call or send a WhatsApp message and we will arrange a visit.</p>
+            <p className="hero-ar" lang="ar" dir="rtl">{SITE.arabicName}</p>
+            <h1 id="hero-title">Maintenance, <span className="nowrap">fit-out</span> and cleaning <span className="dim">for homes and offices in Dubai.</span></h1>
+            <p className="hero-lead">
+              <span className="lead-full">One team for AC, electrical, plumbing, painting, gypsum, tiling, carpentry, cleaning and more. Call or send a WhatsApp message and we will arrange a visit.</span>
+              <span className="lead-short">One team for every job. Call or WhatsApp us.</span>
+            </p>
             <div className="hero-ctas">
               <a className="btn btn-wa" href={waLink()} target="_blank" rel="noopener"><WhatsAppIcon />WhatsApp us</a>
               <a className="btn btn-ghost" href={`tel:${p1.tel}`}>Call {p1.display}</a>
             </div>
-            <ul className="hero-tags">
-              <li>Villas &amp; apartments</li>
-              <li>Offices &amp; shops</li>
-              <li>All areas of Dubai</li>
-            </ul>
-          </div>
-          <div className="collage">
-            <div className="tile"><Image src={PHOTOS['hero-main']} alt="Painters on a scaffold painting a villa exterior" fill preload sizes="(max-width: 900px) 60vw, 330px" className="cover" placeholder="blur" /></div>
-            <div className="tile"><Image src={PHOTOS['hero-a']} alt="Electricians wiring a distribution board" fill sizes="(max-width: 900px) 40vw, 230px" className="cover" placeholder="blur" /></div>
-            <div className="tile"><Image src={PHOTOS['hero-b']} alt="Painter rolling paint in a stairwell" fill sizes="(max-width: 900px) 40vw, 230px" className="cover" placeholder="blur" /></div>
           </div>
         </div>
+        <div className="hero-reel">
+          <p className="hero-note" aria-hidden="true">
+            {SERVICES.length}+ services,<br />one call
+            <svg viewBox="0 0 120 90" fill="none"><path d="M10 8 C 60 6, 104 30, 92 78" /><path d="M78 66 L 92 80 L 102 62" /></svg>
+          </p>
+          <HeroReel cards={REEL} />
+        </div>
+        <ul className="hero-tags wrap">
+          <li>Villas &amp; apartments</li>
+          <li>Offices &amp; shops</li>
+          <li>All areas of Dubai</li>
+        </ul>
       </section>
 
       <div className="ticker">

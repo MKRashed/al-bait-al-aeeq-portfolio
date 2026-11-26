@@ -11,6 +11,9 @@ const short = Object.fromEntries(CATEGORIES.map((c) => [c.id, c.short]));
 
 export default function ServicesExplorer() {
   const [cat, setCat] = useState<CategoryId>('mep');
+  // Banner images load only once their category has been opened (they still fade in place).
+  const [seen, setSeen] = useState<Set<CategoryId>>(() => new Set(['mep']));
+  if (!seen.has(cat)) setSeen(new Set(seen).add(cat));
   const [q, setQ] = useState('');
   const query = q.trim().toLowerCase();
   const visible = query
@@ -49,7 +52,8 @@ export default function ServicesExplorer() {
             <div className="banner">
               {CATEGORIES.map((c) => (
                 <div key={c.id} className={`fade-layer${c.id === cat ? ' on' : ''}`}>
-                  <Image src={c.image} alt={c.imageAlt} fill sizes="(max-width: 900px) 100vw, 760px" className="cover" placeholder="blur" />
+                  {/* The banner is short (150px on phones), so a ~60vw source stays sharp at a fraction of the bytes. */}
+                  {seen.has(c.id) && <Image src={c.image} alt={c.imageAlt} fill sizes="(max-width: 900px) 60vw, 760px" className="cover" placeholder="blur" />}
                 </div>
               ))}
               <div className="banner-cap"><b>{active.label}</b><span>{visible.length} services</span></div>
