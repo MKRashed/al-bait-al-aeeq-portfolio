@@ -2,6 +2,7 @@
 
 import { SERVICES } from '@/data/services';
 import { SITE } from '@/data/site';
+import { track } from '@/lib/pixel';
 import { WhatsAppIcon } from './Icons';
 
 /** Builds a WhatsApp message from the form; nothing is sent to a server. */
@@ -17,6 +18,7 @@ export default function QuoteForm({ defaultService = '' }: { defaultService?: st
       get('details') && `Details: ${get('details')}`,
       get('name') && `Name: ${get('name')}`,
     ].filter(Boolean);
+    track('Lead', { content_name: get('service'), content_category: 'quote_form' });
     window.open(`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
   };
 

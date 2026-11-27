@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import { Archivo, Caveat, DM_Sans, Noto_Kufi_Arabic } from 'next/font/google';
 import { FloatingWhatsApp, Footer, Header, JsonLd } from '@/components/Chrome';
+import { Suspense } from 'react';
+import MetaPixel from '@/components/MetaPixel';
 import TabBar from '@/components/TabBar';
 import { SERVICES } from '@/data/services';
 import { SITE } from '@/data/site';
@@ -90,6 +92,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <FloatingWhatsApp />
         <TabBar />
+        <Suspense fallback={null}>
+          <MetaPixel />
+        </Suspense>
       </body>
     </html>
   );
