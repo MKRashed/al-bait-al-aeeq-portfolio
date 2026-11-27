@@ -52,6 +52,8 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image' },
   formatDetection: { telephone: false },
   appleWebApp: { capable: true, title: SITE.shortName, statusBarStyle: 'black-translucent' },
+  // Meta (Facebook) domain verification; must be in the server-rendered <head>.
+  other: { 'facebook-domain-verification': 'iqg2vu20s7yjuftg594145w8pld6jx' },
 };
 
 export const viewport: Viewport = { themeColor: '#141c5c', viewportFit: 'cover' };
